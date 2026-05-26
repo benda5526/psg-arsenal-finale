@@ -514,6 +514,7 @@
                 <div class="form-group">
                     <label for="nbEnfants" class="required">Nombre d'enfants</label>
                     <select id="nbEnfants" name="nbEnfants" required>
+                        <option value="0">0</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -569,7 +570,7 @@
 
         // Fonction pour mettre à jour les enfants
         function updateChildren() {
-            const nbEnfants = parseInt(nbEnfantsInput.value) || 1;
+            const nbEnfants = parseInt(nbEnfantsInput.value, 10);
             const currentChildren = childrenContainer.querySelectorAll('.child-form').length;
 
             if (nbEnfants > currentChildren) {
@@ -641,7 +642,7 @@
 
                 setTimeout(() => {
                     form.reset();
-                    nbEnfantsInput.value = 1;
+                    nbEnfantsInput.value = 0;
                     updateChildren();
                     successMessage.classList.remove('show');
                     submitBtn.disabled = false;
